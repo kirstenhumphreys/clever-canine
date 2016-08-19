@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var Item = require('./models/item');
+var bluebird = require('bluebird');
 
-mongoose.connect('mongodb://localhost/inventory');
+mongoose.connect('mongodb://localhost/items');
+mongoose.Promise = require('bluebird');
 
 // our script will not exit until we have disconnected from the db.
 function quit() {
@@ -50,7 +52,7 @@ Item.remove({})
 })
 .then(function(allItems) {
   console.log('Printing all subscriptions: ');
-  allItems.forEach(function(todo) {
+  allItems.forEach(function(item) {
     console.log(item);
   });
   quit();

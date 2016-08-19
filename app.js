@@ -4,19 +4,18 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var mongoose = require('mongoose');
 var methodOverride = require('method-override');
+var bluebird = require('bluebird');
 
-var itemsRouter = require('./routes/items');
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var itemsRouter = require('./routes/items');
 
 var app = express();
 
 // Connect to the Database
 mongoose.connect('mongodb://localhost/express-movies');
-
 mongoose.Promise = require('bluebird');
 
 
@@ -30,14 +29,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 app.use(methodOverride('_method'));
 
+//Routes
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/items', itemsRouter);
 app.use('/', routes);
 app.use('/users', users);
+app.use('/items', itemsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

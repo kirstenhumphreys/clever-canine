@@ -33,8 +33,8 @@ router.get('/new', function(req, res, next) {
 
 //SHOW - Items
 router.get('/:id', function(req, res, next) {
-  Item.findbyId(req.params.id)
-  .then(function(todo) {
+  Item.findById(req.params.id)
+  .then(function(item) {
     if (!item) return next(makeError(res, 'Document not found', 404));
     res.render('items/show', { item: item });
   }, function(err) {
