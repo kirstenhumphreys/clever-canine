@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body class="container-fluid">
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+    <div>
+      <h3>Subscriptions:</h3>
+      <% items.forEach(function(item) { %>
+        <dl class="dl-horizontal">
+          <dt>Type of Dog:</dt><dd><%= item.title %></dd>
+          <dt>Plan</dt><dd><%= item.plan %></dd>
+        </dl>
+      <% }) %>
+    </div>
+  </main>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+</html>

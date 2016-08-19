@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var methodOverride = require('method-override');
 
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -15,6 +16,9 @@ var app = express();
 
 // Connect to the Database
 mongoose.connect('mongodb://localhost/express-movies');
+
+mongoose.Promise = require('bluebird');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
