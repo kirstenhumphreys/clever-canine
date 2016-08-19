@@ -11,14 +11,21 @@
 
   <main>
     <div>
-      <h3>Subscriptions:</h3>
+      <h3>Items:</h3>
       <% items.forEach(function(item) { %>
-        <dl class="dl-horizontal">
-          <dt>Type of Dog:</dt><dd><%= item.title %></dd>
-          <dt>Plan</dt><dd><%= item.plan %></dd>
-        </dl>
+        <h4>
+          <form method="POST" action="/items/<%= item._id %>?_method=DELETE">
+            <a href="/items/<%= item._id %>">
+              <%= item.title + ' - ' + item.completed %>
+            </a>
+              <button class="btn waves-effect waves-light red darken-1" type="submit" name="action">Delete
+              <i class="material-icons right">send</i>
+              </button>
+          </form>
+        </h4>
       <% }) %>
     </div>
+    <a href="/items/new" id="download-button" class="btn-large waves-effect waves-light yellow darken-1">New Item</a>
   </main>
 
   <footer>
@@ -26,3 +33,4 @@
   </footer>
 </body>
 </html>
+

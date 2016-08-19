@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var Item = require('../models/item');
+
 function makeError(res, message, status) {
   res.statusCode = status;
   var error = new Error(message);
@@ -8,26 +10,12 @@ function makeError(res, message, status) {
   return error;
 }
 
-// let items = [
-//   {
-//     title: 'Small Dog',
-//     plan: '1 month'
-//   },
-//   {
-//     title: 'Medium Dog',
-//     plan: '3 month'
-//   },
-//   {
-//     title: 'Large Dog',
-//     plan: '6 month'
-//   }
-// ];
 
 //INDEX
 router.get('/', function(req, res, next) {
   Item.find({})
-  .then(function(todos) {
-    res.render('items/index', { item: item });
+  .then(function(items) {
+    res.render('items/index', { items: items });
   }, function(err) {
     return next(err);
   });
@@ -45,7 +33,7 @@ router.get('/new', function(req, res, next) {
 
 //SHOW - Items
 router.get('/:id', function(req, res, next) {
-  item.findbyId(req.params.id)
+  Item.findbyId(req.params.id)
   .then(function(todo) {
     if (!item) return next(makeError(res, 'Document not found', 404));
     res.render('items/show', { item: item });
@@ -56,7 +44,7 @@ router.get('/:id', function(req, res, next) {
 
 //CREATE - Add Items to Cart
 router.post('/', function(req, res, next) {
-  var todo = new Todo({
+  var item = new Item({
     title: req.body.title,
     plan: req.body.plan,
     inCart: req.body.inCart ? true : false
@@ -84,7 +72,7 @@ router.get('/:id/edit', function(req, res, next) {
 router.put('/:id', function(req, res, next) {
   Item.findById(req.params.id)
   .then (function(item) {
-    if (!item) retrun next(makeError(res, 'Document not found', 404));
+    if (!item) return next(makeError(res, 'Document not found', 404));
     item.title = req.body.title;
     item.plan = req.body.plan;
     item.inCart = req.body.inCart ? true : false;

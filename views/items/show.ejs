@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body class="container-fluid">
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+    <div>
+      <h3>SHOW</h3>
+      <p><b>Title: </b><%= item.title %></p>
+      <p><b>ID: </b><%= item._id %></p>
+      <p><b>Plan: </b><%= item.plan %></p>
+      <p><b>In Shopping cart: </b><%= item.inCart %></p>
+    </div>
+
+    <a href="/items" class="btn btn-primary">Back</a>
+    <a href="/items/<%= item._id %>/edit" class="btn btn-danger">Edit</a>
+  </main>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+</html>

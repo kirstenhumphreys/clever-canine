@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var methodOverride = require('method-override');
 
-
+var itemsRouter = require('./routes/items');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -35,7 +35,7 @@ app.use(methodOverride('_method'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use('/items', itemsRouter);
 app.use('/', routes);
 app.use('/users', users);
 
