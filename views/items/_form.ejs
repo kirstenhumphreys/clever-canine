@@ -1,12 +1,16 @@
-<div class="form-group">
-  <label for="title">Neighborhood</label>
-  <select type="text"
-          class="form-control"
+
+  <div class="form-group">
+  <label for="title">Title ABC</label>
+  <select
+         class="form-control"
          name="title"
          value="<%= item.title %>">
-         <% include ../partials/titles %>
-</select>
+          <option value="Small Canine">Small Canine</option>
+          <option value="Medium Canine">Medium Canine</option>
+          <option value="Large Canine">Large Canine</option>
+  </select>
 </div>
+
 
 <div class="form-group">
   <label for="title">Title</label>
@@ -15,6 +19,7 @@
          name="title"
          value="<%= item.title %>">
 </div>
+
 
 <div class="form-group">
   <label for="plan">Plan</label>
@@ -31,6 +36,8 @@
   <%= item.inCart ? 'checked' : '' %>
   </p>
 </div>
+
+
 
 
 

@@ -1,14 +1,39 @@
-  <footer class="page-footer yellow darken-1">
-    <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="yellow-text text-lighten-3" href="http://kirstenhumphreys.com">Kirsten</a>
-      </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col l6 s12">
+      <h5 class="white-text">Company Bio</h5>
+      <p class="grey-text text-lighten-4">BIO GOES HERE.</p>
+
+
     </div>
-</footer>
+    <div class="col l3 s12">
 
+    </div>
+    <div class="col l3 s12">
+      <h5 class="white-text">Connect</h5>
+      <ul>
+        <li><a class="white-text" href="#!">Facebook</a></li>
+        <li><a class="white-text" href="#!">Twitter</a></li>
+        <li><a class="white-text" href="#!">Instagram</a></li>
+        <li><a class="white-text" href="#!">Something Else</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="footer-copyright">
+  <div class="container">
+  Made by <a class="yellow-text text-lighten-3" href="http://kirstenhumphreys.com">Kirsten</a>
+  </div>
+</div>
 
+<script type="text/javascript" src="/javascripts/jquery.min.js" defer></script>
+<script type="text/javascript" src="/javascripts/materialize.min.js" defer></script>
 
-
-
-
-
+<script defer>
+  console.log('NOT READY');
+  $(document).ready(function() {
+    console.log('READY');
+    $('select').material_select();
+  });
+</script>
