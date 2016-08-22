@@ -10,47 +10,51 @@ function makeError(res, message, status) {
   return error;
 }
 
+function authenticate(req, res, next) {
+  if(!req.isAuthenticated()) {
+    req.flash('error', 'Please signup or login.');
+    res.redirect('/');
+  }
+  else {
+    next();
+  }
+}
 
 //INDEX
-router.get('/', function(req, res, next) {
-  Item.find({})
-  .then(function(items) {
-    res.render('items/index', { items: items });
-  }, function(err) {
-    return next(err);
-  });
+router.get('/', authenticate, function(req, res, next) {
+  var items = global.currentUser.items;
+  res.render('items/index', { items: items, message: req.flash() });
 });
 
 //NEW - Item or Subscription
-router.get('/new', function(req, res, next) {
+router.get('/new', authenticate, function(req, res, next) {
   var item = {
     title: '',
     plan: '',
     inCart: false
   };
-  res.render('items/new', { item: item } );
+  res.render('items/new', { item: item, message: req.flash() } );
 });
 
+
+
 //SHOW - Items
-router.get('/:id', function(req, res, next) {
-  Item.findById(req.params.id)
-  .then(function(item) {
-    if (!item) return next(makeError(res, 'Document not found', 404));
-    res.render('items/show', { item: item });
-  }, function(err) {
-    return next(err);
-  });
+router.get('/:id', authenticate, function(req, res, next) {
+  var item = currentUser.items.id(req.params.id);
+  if (!item) return next(makeError(res, 'Document not found', 404));
+  res.render('items/show', { item: item, message: req.flash() } );
 });
 
 //CREATE - Add Items to Cart
-router.post('/', function(req, res, next) {
+router.post('/', authenticate, function(req, res, next) {
   var item = new Item({
     title: req.body.title,
     plan: req.body.plan,
     inCart: req.body.inCart ? true : false
   });
-  item.save()
-  .then(function(saved) {
+  currentUser.items.push(item);
+  currentUser.save()
+  .then(function() {
     res.redirect('/items');
   }, function(err) {
     return next(err);
@@ -58,26 +62,37 @@ router.post('/', function(req, res, next) {
 });
 
 //EDIT - Cart
-router.get('/:id/edit', function(req, res, next) {
-  Item.findbyId(req.params.id)
-  .then(function(item) {
-    if (!item) return next(makeError(res, 'Document not found', 404));
-    res.render('items/edit', { item : item });
-  }, function(err) {
-    return next(err);
-  });
+router.get('/:id/edit', authenticate, function(req, res, next) {
+  var item = currentUser.items.id(req.params.id);
+  if (!item) return next(makeError(res, 'Document not found', 404));
+  res.render('items/edit', { item: item, message: req.flash() } );
 });
 
 //UPDATE - Cart
-router.put('/:id', function(req, res, next) {
-  Item.findById(req.params.id)
-  .then (function(item) {
-    if (!item) return next(makeError(res, 'Document not found', 404));
+router.put('/:id', authenticate, function(req, res, next) {
+  var item = currentUser.items.id(req.params.id);
+  if (!item) return next(makeError(res, 'Document not found', 404));
+  else {
     item.title = req.body.title;
     item.plan = req.body.plan;
     item.inCart = req.body.inCart ? true : false;
-    return item.save();
-  })
+    currentUser.save()
+    .then(function(saved) {
+      res.redirect('/items');
+    }, function(err) {
+      return next(err);
+    });
+  }
+});
+
+
+//DESTROY - Remove From Cart
+router.delete('/:id', authenticate, function(req, res, next) {
+  var item = currentUser.items.id(req.params.id);
+  if (!item) return next(makeError(res, 'Document not found', 404));
+  var index = currentUser.items.indexOf(item);
+  currentUser.items.splice(index, 1);
+  currentUser.save()
   .then(function(saved) {
     res.redirect('/items');
   }, function(err) {
@@ -85,10 +100,15 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
-//DESTROY - Remove From Cart
-router.delete('/:id', function(req, res, next) {
-  Item.findByIdandRemove(req.params.id)
-  .then(function() {
+//TOGGLE cart
+router.get('/:id/toggle', function(req, res, next) {
+  Item.findById(req.params.id)
+  .then(function(item) {
+    if (!item) return next(makeError(res, 'Document not found', 404));
+    item.inCart = !item.inCart;
+    return item.save();
+  })
+  .then(function(saved) {
     res.redirect('/items');
   }, function(err) {
     return next(err);
