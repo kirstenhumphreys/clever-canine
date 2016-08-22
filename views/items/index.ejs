@@ -14,7 +14,15 @@
     <div>
       <h3>Items:</h3>
       <% items.forEach(function(item) { %>
-        <h2> <%= item.title %> </h2>
+        <h5>
+          <form method="POST" action="/items/<%= item._id %>?_method=DELETE">
+          <a href="/items/<%= item._id %>">
+        <%= item.title %>
+        </a>
+        </h5>
+        <h6> <%= item.plan %> </h6>
+        <h6> <%= item.inCart %> </h6>
+        <button type="submit" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
       <% }) %>
     </div>
     <a href="/items/new" id="download-button" class="btn-large waves-effect waves-light yellow darken-1">New Item</a>

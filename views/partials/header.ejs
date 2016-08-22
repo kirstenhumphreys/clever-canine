@@ -1,12 +1,34 @@
 
-  <nav class="yellow darken-1" role="navigation">
+ <nav class="yellow darken-1" role="navigation">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Clever Canine Club</a>
+      <a href="/" class="brand-logo">Clever Canine Club</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/">Home</a></li>
-        <li><a href="#">Sign Up</a></li>
-        <li><a href="#">Log In</a></li>
+
+
+        <% if (currentUser) { %>
+        <li><a href="#"><%= currentUser.local.email %></a></li>
+        <li><a href="/logout">Logout</a></li>
         <li><a href="/items/">Cart</a></li>
+
+      <% } else { %>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Signup</a></li>
+      <% } %>
+
       </ul>
     </div>
   </nav>
+
+  <div class="flash">
+  <% if (typeof message !== 'undefined') { %>
+    <% if (typeof message.error !== 'undefined' && message.error.length > 0) { %>
+      <div class="bg-danger"><%= message.error %></div>
+    <% } %>
+    <% if (typeof message.info !== 'undefined' && message.info.length > 0) { %>
+      <div class="bg-info"><%= message.info %></div>
+    <% } %>
+    <% if (typeof message.success !== 'undefined' && message.success.length > 0) { %>
+      <div class="bg-success"><%= message.success %></div>
+    <% } %>
+  <% } %>
+</div>

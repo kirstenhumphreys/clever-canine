@@ -11,15 +11,15 @@
 
   <main>
     <div>
-      <h3>Show</h3>
+      <h3>Item Details:</h3>
       <p><b>Title: </b><%= item.title %></p>
       <p><b>ID: </b><%= item._id %></p>
       <p><b>Plan: </b><%= item.plan %></p>
       <p><b>In Shopping cart: </b>
       <% if (item.completed) { %>
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+            <i class="large material-icons">thumb_up</i>
         <% } else { %>
-          <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+          <i class="large material-icons">thumb_down</i>
         <% } %>
       </p>
     <a href="/items" class="btn btn-primary">Back</a>

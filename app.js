@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var methodOverride = require('method-override');
 var bluebird = require('bluebird');
+var passport = require('passport');
+var session = require('express-session');
+var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -30,6 +33,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(methodOverride('_method'));
+
+//Passport
+app.use(session({ secret: 'Hello!',
+                  resave: true,
+                  saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./config/passport/passport')(passport);
+
+// This middleware will allow us to use the currentUser in our views and routes.
+app.use(function (req, res, next) {
+  global.currentUser = req.user;
+  next();
+});
+
 
 //Routes
 app.use(express.static(path.join(__dirname, 'public')));
