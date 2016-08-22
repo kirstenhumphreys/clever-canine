@@ -1,4 +1,14 @@
 <div class="form-group">
+  <label for="title">Neighborhood</label>
+  <select type="text"
+          class="form-control"
+         name="title"
+         value="<%= item.title %>">
+         <% include ../partials/titles %>
+</select>
+</div>
+
+<div class="form-group">
   <label for="title">Title</label>
   <input type="text"
          class="form-control"
