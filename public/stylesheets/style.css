@@ -5,7 +5,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #1A237E;
 }
 
 h5 {
@@ -16,11 +16,11 @@ footer {
   padding: 0px;
 }
 
-.parallax-container {
-      height: 500px;
-    }
 
 form {
   padding: 30px;
   width: 400px;
 }
+
+
+
