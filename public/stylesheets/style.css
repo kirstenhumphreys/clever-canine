@@ -1,7 +1,6 @@
 body {
   padding: 0px;
   font: 14px "Roboto Slab", serif;
-  background-image: url('');
 
 }
 
@@ -15,4 +14,13 @@ h5 {
 
 footer {
   padding: 0px;
+}
+
+.parallax-container {
+      height: 500px;
+    }
+
+form {
+  padding: 30px;
+  width: 400px;
 }

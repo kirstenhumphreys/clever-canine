@@ -1,6 +1,6 @@
 
   <div class="form-group">
-  <label for="title">Title ABC</label>
+  <label for="title">Subscription Type:</label>
   <select
          class="form-control"
          name="title"
@@ -9,24 +9,20 @@
           <option value="Medium Canine">Medium Canine</option>
           <option value="Large Canine">Large Canine</option>
   </select>
+  </div>
 </div>
 
-
-<div class="form-group">
-  <label for="title">Title</label>
-  <input type="text"
-         class="form-control"
-         name="title"
-         value="<%= item.title %>">
-</div>
-
-
-<div class="form-group">
-  <label for="plan">Plan</label>
-  <input type="text"
+  <div class="form-group">
+  <label for="title">Plan Type:</label>
+  <select
          class="form-control"
          name="plan"
          value="<%= item.plan %>">
+          <option value="One Month">One Time Thing</option>
+          <option value="Three Months">Renew Every Three Months</option>
+          <option value="Six Months">Renew Every Six Months</option>
+  </select>
+  </div>
 </div>
 
 <div class ="form-group">

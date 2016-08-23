@@ -18,7 +18,7 @@ var itemsRouter = require('./routes/items');
 var app = express();
 
 // Connect to the Database
-mongoose.connect('mongodb://localhost/express-movies');
+mongoose.connect('mongodb://localhost/items');
 mongoose.Promise = require('bluebird');
 
 

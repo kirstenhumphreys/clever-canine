@@ -50,7 +50,7 @@ router.post('/', authenticate, function(req, res, next) {
   var item = new Item({
     title: req.body.title,
     plan: req.body.plan,
-    inCart: req.body.inCart ? true : false
+    inCart: req.body.inCart ? false : true
   });
   currentUser.items.push(item);
   currentUser.save()
