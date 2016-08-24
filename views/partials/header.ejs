@@ -3,12 +3,12 @@
 
  <nav class="yellow darken-1" role="navigation">
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Clever Canine Club</a>
+      <a href="/" class="brand-logo"><img id="logo" src="/images/horizontal_logo.png"/></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 
 
         <% if (currentUser) { %>
-        <li><a href="/items/">Hi, <%= currentUser.local.email %></a></li>
+        <li><a href="/items/">Hi, <%= currentUser.name %></a></li>
         <li><a href="/logout">Logout</a></li>
         <li><a href="/items/">Cart</a></li>
 
@@ -18,6 +18,7 @@
       <% } %>
 
       </ul>
+
     </div>
   </nav>
 

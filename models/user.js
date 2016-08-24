@@ -5,9 +5,8 @@ var Item = require('./item');
 var UserSchema = new mongoose.Schema({
   local : {
     email    : String,
-    password : String
+    password : String,
   },
-
   name: String,
 
   items : [Item.schema]

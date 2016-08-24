@@ -11,9 +11,11 @@
 
 
   <main class="container">
-    <div>
-      <h3>Yay! Your Order has been placed!</h3>
+    <div class="order">
+      <img class="dog-pic" src="/images/dog.png">
+      <h4>Yay, your order has been placed!</h4>
 
+      <p>What your getting:</p>
       <% items.forEach(function(item) { %>
         <h5>
           <form method="POST" action="/items/<%= item._id %>?_method=DELETE">
@@ -22,9 +24,8 @@
         </a>
         </h5>
         <h6> <%= item.plan %> </h6>
-        <h6> <%= item.inCart %> </h6>
       <% }) %>
-    </div>
+      </div>
   </main>
 
 

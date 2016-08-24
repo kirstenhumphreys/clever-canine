@@ -12,7 +12,7 @@
 
   <main class="container">
       <br><br>
-      <h3>Your Subscriptions:</h3>
+      <h3><%= currentUser.name %>'s Subscriptions:</h3>
       <br><br>
       <div class="subscriptions">
       <% items.forEach(function(item) { %>
@@ -40,6 +40,8 @@
 
     </div>
   </main>
+
+
 
   <footer>
     <% include ../partials/footer %>
