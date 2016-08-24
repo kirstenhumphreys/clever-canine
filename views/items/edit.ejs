@@ -9,8 +9,8 @@
     <% include ../partials/header %>
   </header>
 
-  <main>
-    <h3>EDIT</h3>
+  <main class="center">
+    <h3>Edit <%= currentUser.name %>'s Subscription</h3>
 
     <form class="item-form" action="/items/<%= item._id %>?_method=PUT" method="post">
       <% include _form %>
