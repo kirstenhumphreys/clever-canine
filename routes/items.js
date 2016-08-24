@@ -27,9 +27,9 @@ router.get('/', authenticate, function(req, res, next) {
 });
 
 //CART
-router.get('/:id/cart', authenticate, function(req, res, next) {
+router.get('/order', authenticate, function(req, res, next) {
   var items = global.currentUser.items;
-  res.render('items/index', { items: items, message: req.flash() });
+  res.render('items/order', { items: items, message: req.flash() });
 });
 
 //NEW - Item or Subscription

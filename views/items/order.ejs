@@ -13,6 +13,7 @@
   <main class="container">
     <div>
       <h3>Yay! Your Order has been placed!</h3>
+
       <% items.forEach(function(item) { %>
         <h5>
           <form method="POST" action="/items/<%= item._id %>?_method=DELETE">

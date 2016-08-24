@@ -18,7 +18,24 @@ var itemsRouter = require('./routes/items');
 var app = express();
 
 // Connect to the Database
-mongoose.connect('mongodb://localhost/items');
+var uristring =
+process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL ||
+process.env.MONGODB_URI ||
+'mongodb://localhost/items';
+
+// Connect to database
+mongoose.connect(uristring, function(err, res) {
+ if(err) {
+   console.log('ERROR connecting to: '+uristring+'. '+err);
+ }else {
+   console.log('Succeeded in connecting to: '+uristring);
+ }
+});
+
+
+
+
 mongoose.Promise = require('bluebird');
 
 
