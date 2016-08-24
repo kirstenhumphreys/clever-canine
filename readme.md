@@ -4,7 +4,7 @@
 
 A MEN Stack Web Application that enables you to order subscription boxes for your furry friend. 
 
-View the Deployed App on Heroku:<br>
+**View the Deployed App on Heroku:**<br>
 [Clever Canine Club](https://guarded-dawn-29413.herokuapp.com/)
 
 
@@ -39,7 +39,7 @@ View the Deployed App on Heroku:<br>
 
 ![alt text](https://raw.githubusercontent.com/kirstenhumphreys/clever-canine/master/public/images/wireframes/Log%20In%20Or%20Sign%20up.png "Sign Up or Log In")
 
-
+![alt text]()
 
 ###Future Development:
 
