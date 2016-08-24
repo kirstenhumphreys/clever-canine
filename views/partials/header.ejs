@@ -8,7 +8,7 @@
 
 
         <% if (currentUser) { %>
-        <li><a href="/items/">Hi, <%= currentUser.name %></a></li>
+        <li><a href="/items/">Hi, <%= currentUser.local.email %></a></li>
         <li><a href="/logout">Logout</a></li>
         <li><a href="/items/">Cart</a></li>
 

@@ -16,10 +16,10 @@
       <p><b>ID: </b><%= item._id %></p>
       <p><b>Plan: </b><%= item.plan %></p>
       <p><b>In Shopping cart: </b>
-      <% if (item.completed) { %>
-            <i class="large material-icons">thumb_up</i>
+      <% if (item.inCart) { %>
+            <i class="small material-icons">thumb_up</i>
         <% } else { %>
-          <i class="large material-icons">thumb_down</i>
+          <i class="small material-icons">thumb_down</i>
         <% } %>
       </p>
     <a href="/items" class="btn btn-primary">Back</a>

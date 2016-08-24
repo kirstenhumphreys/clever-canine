@@ -4,8 +4,12 @@ body {
 
 }
 
+i {
+  font-size: 2rem;
+}
+
 a {
-  color: #1A237E;
+  color: black;
 }
 
 h5 {
@@ -16,10 +20,36 @@ footer {
   padding: 0px;
 }
 
+main {
+  padding-bottom: 150px;
 
-form {
+}
+
+.subscriptions {
+  padding: 20px;
+  margin: 0 auto;
+  text-align: left;
+
+}
+
+.brand-logo {
+  padding: 10px;
+}
+
+.form {
   padding: 30px;
   width: 400px;
+  margin: 0 auto;
+  text-align: left;
+  border: 3px solid #fdd835;
+  border-radius: 10px;
+  background-color:;
+}
+
+.buttons {
+  padding: 20px 0 20px 5px;
+
+
 }
 
 

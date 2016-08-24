@@ -12,7 +12,7 @@
 
   <main class="container">
     <div>
-      <h3>Your Subscriptions:</h3>
+      <h3>Yay! Your Order has been placed!</h3>
       <% items.forEach(function(item) { %>
         <h5>
           <form method="POST" action="/items/<%= item._id %>?_method=DELETE">
@@ -22,10 +22,8 @@
         </h5>
         <h6> <%= item.plan %> </h6>
         <h6> <%= item.inCart %> </h6>
-        <button type="submit" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
       <% }) %>
     </div>
-    <a href="/items/new" id="download-button" class="btn-large waves-effect waves-light yellow darken-1">Submit Order</a>
   </main>
 
 

@@ -26,6 +26,12 @@ router.get('/', authenticate, function(req, res, next) {
   res.render('items/index', { items: items, message: req.flash() });
 });
 
+//CART
+router.get('/:id/cart', authenticate, function(req, res, next) {
+  var items = global.currentUser.items;
+  res.render('items/index', { items: items, message: req.flash() });
+});
+
 //NEW - Item or Subscription
 router.get('/new', authenticate, function(req, res, next) {
   var item = {

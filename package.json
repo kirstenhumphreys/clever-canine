@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www"
+
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
