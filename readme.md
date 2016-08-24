@@ -35,11 +35,13 @@ A MEN Stack Web Application that enables you to order subscription boxes for you
 
 ![alt text](https://raw.githubusercontent.com/kirstenhumphreys/clever-canine/master/public/images/wireframes/Choose%20Plan.png "Home Page")
 
-**Sign Up or Log In**
+**Sign Up or Log In:**
 
 ![alt text](https://raw.githubusercontent.com/kirstenhumphreys/clever-canine/master/public/images/wireframes/Log%20In%20Or%20Sign%20up.png "Sign Up or Log In")
 
-![alt text]()
+**View Cart:**
+
+![alt text](https://raw.githubusercontent.com/kirstenhumphreys/clever-canine/master/public/images/wireframes/View%20Cart.png "View Cart")
 
 ###Future Development:
 
